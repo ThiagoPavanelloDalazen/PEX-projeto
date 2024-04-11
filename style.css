@@ -54,10 +54,12 @@ nav .login button.signup{
 
 header{
     padding: 0 80px;
-    height: calc(100vh - 80px);
+    height: calc(100vh - 400px);
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-image: url(../fotos/fundo-papel-verde.gif);
+
 }
 
 header .left{
@@ -137,7 +139,8 @@ h2.separator{
 
 .sell-nft{
     padding: 0 80px;
-    margin: 50px 0 80px;
+    margin: 50px auto 80px;
+    max-width: 1500px;
     display: flex;
     justify-content: space-between;
     gap: 30px;
