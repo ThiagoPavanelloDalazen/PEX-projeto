@@ -53,13 +53,15 @@ nav .login button.signup{
 }
 
 header{
+    color: white;
     padding: 0 80px;
-    height: calc(100vh - 400px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-image: url(../fotos/fundo-papel-verde.gif);
-
+        height: calc(100vh - 400px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-image: url(../fotos/fundo2-cortado.gif);
+        background-size: cover; /* Ajusta o tamanho da imagem */
+        background-position: center; /* Centraliza a imagem */
 }
 
 header .left{
