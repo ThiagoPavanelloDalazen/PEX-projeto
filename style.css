@@ -9,8 +9,9 @@
 
 a{
     text-decoration: none;
-    color: #000;
+    color: green
 }
+
 
 img{
     object-fit: cover;
@@ -46,18 +47,23 @@ nav .login button{
 }
 
 nav .login button.signup{
-    background-color: #000;
+    background-color: white;
     color: #fff;
     border-radius: 4px;
     margin-right: 14px;
 }
 
+
 header{
+    color: white;
     padding: 0 80px;
-    height: calc(100vh - 80px);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+        height: calc(100vh - 400px);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background-image: url(../fotos/fundo2-cortado.gif);
+        background-size: cover; /* Ajusta o tamanho da imagem */
+        background-position: center; /* Centraliza a imagem */
 }
 
 header .left{
@@ -137,7 +143,8 @@ h2.separator{
 
 .sell-nft{
     padding: 0 80px;
-    margin: 50px 0 80px;
+    margin: 50px auto 80px;
+    max-width: 1500px;
     display: flex;
     justify-content: space-between;
     gap: 30px;
@@ -188,7 +195,7 @@ h2.separator{
 }
 
 .nft-shop .category a{
-    background-color: #dfdcdc;
+    background-color: white;
     padding: 8px 14px;
     font-size: 15px;
     border-radius: 14px;
