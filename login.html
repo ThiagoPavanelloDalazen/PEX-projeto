@@ -6,14 +6,21 @@
     <link rel="stylesheet" href="login.css">
 
     <title>Login</title>
+    <style>
+        .error {
+            color: red;
+            font-size: 0.9em;
+            display: none;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <div class="form-image">
-            <img src="https://www.thejohnbarbershop.com.br/empresa/img/logo.png">
+            <img src="https://www.thejohnbarbershop.com.br/empresa/img/logo.png" alt="Logo">
         </div>
         <div class="form">
-            <form action="#">
+            <form id="loginForm">
                 <div class="form-header">
                     <div class="title">
                         <h1>Login</h1>
@@ -24,11 +31,13 @@
                     <div class="input-bot">
                         <label for="email">Email</label>
                         <input id="email" type="email" name="email" placeholder="Digite seu email" required>
+                        <div id="email-error" class="error"></div>
                     </div>
 
                     <div class="input-bot">
                         <label for="password">Senha</label>
                         <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
+                        <div id="password-error" class="error"></div>
                     </div>
                 </div>
 
@@ -39,5 +48,39 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            let valid = true;
+
+            // Validar Email
+            const email = document.getElementById('email').value;
+            const emailError = document.getElementById('email-error');
+            if (!email || !/\S+@\S+\.\S+/.test(email)) {
+                emailError.style.display = 'block';
+                valid = false;
+            } else {
+                emailError.style.display = 'none';
+            }
+
+            // Validar Senha
+            const password = document.getElementById('password').value;
+            const passwordError = document.getElementById('password-error');
+            if (!password || password.length < 8) {
+                passwordError.style.display = 'block';
+                valid = false;
+            } else {
+                passwordError.style.display = 'none';
+            }
+
+            if (!valid) {
+                e.preventDefault();
+            } else {
+                // Redirecionar para a página de pós-login
+                e.preventDefault();
+                window.location.href = "posLogin.html";
+            }
+        });
+    </script>
 </body>
 </html>

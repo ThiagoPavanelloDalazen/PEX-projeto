@@ -98,20 +98,7 @@
                     // Remova o evento quando um evento existente é clicado
                     $('#calendar').fullCalendar('removeEvents', event._id);
                 },
-                events: [
-                    {
-                        title: 'Barbearia - Reservado',
-                        start: '2024-05-14T10:00:00',
-                        end: '2024-05-14T11:30:00',
-                        className: 'busy-day' // Marca automaticamente o dia como ocupado
-                    },
-                    {
-                        title: 'Barbearia - Disponível',
-                        start: '2024-05-15',
-                        end: '2024-05-16'
-                    }
-                    // Adicione mais eventos conforme necessário
-                ]
+                
             });
 
             confirmButton.click(function() {
