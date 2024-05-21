@@ -9,8 +9,9 @@
 
 a{
     text-decoration: none;
-    color: #000;
+    color: green
 }
+
 
 img{
     object-fit: cover;
@@ -46,11 +47,12 @@ nav .login button{
 }
 
 nav .login button.signup{
-    background-color: #000;
+    background-color: white;
     color: #fff;
     border-radius: 4px;
     margin-right: 14px;
 }
+
 
 header{
     color: white;
@@ -193,7 +195,7 @@ h2.separator{
 }
 
 .nft-shop .category a{
-    background-color: #dfdcdc;
+    background-color: white;
     padding: 8px 14px;
     font-size: 15px;
     border-radius: 14px;
