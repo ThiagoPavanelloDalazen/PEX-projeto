@@ -61,10 +61,12 @@ header{
         display: flex;
         align-items: center;
         justify-content: space-between;
-        background-image: url(../fotos/fundo2-cortado.gif);
+        background-image: url(./images/header.gif);
         background-size: cover; /* Ajusta o tamanho da imagem */
         background-position: center; /* Centraliza a imagem */
 }
+
+
 
 header .left{
     width: 700px;
@@ -332,7 +334,7 @@ h2.separator{
 }
 
 footer{
-    background-color: #000;
+  
     color: #fff;
     padding: 100px 80px;
     display: flex;
