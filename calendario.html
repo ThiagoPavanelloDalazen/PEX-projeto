@@ -47,15 +47,15 @@
     <h2>Calendário The John Barbershop</h2>
     <div class="container">
         <div id="calendar"></div>
-        <select id="time-select" class="custom-select" style="display: none;">
-            <!-- Opções de horário serão adicionadas dinamicamente -->
+        <select id="horario-select" class="custom-select" style="display: none;">
+           
         </select>
-        <button class="btn btn-primary btn-confirmar" style="display: none;">Confirmar</button>
+        <button class="btn btn-primary btn-agendar" style="display: none;">Confirmar</button>
     </div>
     <script>
         $(document).ready(function() {
-            var timeSelect = $('#time-select');
-            var confirmButton = $('.btn-confirmar');
+            var horarioSelect = $('#horario-select');
+            var agendarButton = $('.btn-agendar');
 
             $('#calendar').fullCalendar({
                 header: {
@@ -66,54 +66,54 @@
                 defaultView: 'month',
                 selectable: true,
                 selectHelper: true,
-                select: function(start, end) {
-                    var selectableTimes = [];
-                    var dayOfWeek = start.day();
+                select: function(inicio, fim) {
+                    var horariosDisponiveis = [];
+                    var diaSemana = inicio.day();
 
-                    // Defina os horários disponíveis com base no dia da semana
-                    if (dayOfWeek >= 2 && dayOfWeek <= 5) { // Terça a Sexta
-                        for (var i = 9; i <= 21; i++) {
-                            selectableTimes.push(moment({hour: i, minute: 30}).format('HH:mm'));
+                    
+                    if (diaSemana >= 2 && diaSemana <= 5) { 
+                        for (var hora = 9; hora <= 21; hora++) {
+                            horariosDisponiveis.push(moment({hour: hora, minute: 30}).format('HH:mm'));
                         }
-                    } else if (dayOfWeek === 6) { // Sábado
-                        for (var i = 8; i <= 17; i++) {
-                            selectableTimes.push(moment({hour: i}).format('HH:mm'));
+                    } else if (diaSemana === 6) { 
+                        for (var hora = 8; hora <= 17; hora++) {
+                            horariosDisponiveis.push(moment({hour: hora}).format('HH:mm'));
                         }
-                    } else { // Segunda e Domingo
+                    } else { 
                         alert('Desculpe, estamos fechados às segundas e domingos.');
                         return;
                     }
 
-                    // Limpe e adicione as opções de horário ao seletor
-                    timeSelect.empty();
-                    $.each(selectableTimes, function(index, value) {
-                        timeSelect.append('<option value="' + value + '">' + value + '</option>');
+                   
+                    horarioSelect.empty();
+                    $.each(horariosDisponiveis, function(indice, valor) {
+                        horarioSelect.append('<option value="' + valor + '">' + valor + '</option>');
                     });
 
-                    // Exiba o seletor de horário e o botão de confirmar
-                    timeSelect.show();
-                    confirmButton.show();
+                    
+                    horarioSelect.show();
+                    agendarButton.show();
                 },
-                eventClick: function(event) {
-                    // Remova o evento quando um evento existente é clicado
-                    $('#calendar').fullCalendar('removeEvents', event._id);
+                eventClick: function(evento) {
+                   
+                    $('#calendar').fullCalendar('removeEvents', evento._id);
                 },
                 
             });
 
-            confirmButton.click(function() {
-                var selectedTime = timeSelect.val();
-                if (!selectedTime) {
+            agendarButton.click(function() {
+                var horarioSelecionado = horarioSelect.val();
+                if (!horarioSelecionado) {
                     alert('Por favor, selecione um horário.');
                     return;
                 }
-                // Remove o horário selecionado do seletor de horários
-                timeSelect.find('option[value="' + selectedTime + '"]').remove();
-                timeSelect.hide();
-                confirmButton.hide();
+                
+                horarioSelect.find('option[value="' + horarioSelecionado + '"]').remove();
+                horarioSelect.hide();
+                agendarButton.hide();
 
-                // Implemente a lógica para confirmar o agendamento aqui
-                alert('Agendamento confirmado para: ' + selectedTime);
+                
+                alert('Agendamento confirmado para: ' + horarioSelecionado);
             });
         });
     </script>
