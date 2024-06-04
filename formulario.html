@@ -23,7 +23,7 @@
             <form id="formularioCadastro">
                 <div class="form-header">
                     <div class="title">
-                        <h1>cadastre-se</h1>
+                        <h1>Cadastre-se</h1>
                     </div>
                     <div class="login-button">
                         <button type="button"><a href="login.html">Entrar</a></button>
@@ -88,6 +88,7 @@
                             <label for="outros">Outros</label>
                         </div>
                     </div>
+                    <div id="genero-erro" class="mensagem-erro">Selecione um gênero.</div>
                 </div>
 
                 <div class="continue-button">
@@ -101,7 +102,7 @@
         document.getElementById('formularioCadastro').addEventListener('submit', function (e) {
             let valido = true;
 
-            // Validar Primeiro Nome
+            
             const nome = document.getElementById('nome').value;
             const nomeErro = document.getElementById('nome-erro');
             if (/\d/.test(nome)) {
@@ -111,7 +112,7 @@
                 nomeErro.style.display = 'none';
             }
 
-            // Validar Sobrenome
+            
             const sobrenome = document.getElementById('sobrenome').value;
             const sobrenomeErro = document.getElementById('sobrenome-erro');
             if (/\d/.test(sobrenome)) {
@@ -121,7 +122,7 @@
                 sobrenomeErro.style.display = 'none';
             }
 
-            // Validar Celular
+           
             const celular = document.getElementById('celular').value;
             const celularErro = document.getElementById('celular-erro');
             if (!/^\d+$/.test(celular.replace(/\D/g, ''))) {
@@ -131,7 +132,7 @@
                 celularErro.style.display = 'none';
             }
 
-            // Validar Senha
+            
             const senha = document.getElementById('senha').value;
             const senhaErro = document.getElementById('senha-erro');
             const criteriosSenha = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{12,}$/;
@@ -142,7 +143,7 @@
                 senhaErro.style.display = 'none';
             }
 
-            // Validar Confirmação de Senha
+            
             const confirmaSenha = document.getElementById('confirma-senha').value;
             const confirmaSenhaErro = document.getElementById('confirma-senha-erro');
             if (senha !== confirmaSenha) {
@@ -152,7 +153,7 @@
                 confirmaSenhaErro.style.display = 'none';
             }
 
-            // Validar Gênero
+            
             const inputsGenero = document.querySelectorAll('input[name="gender"]');
             let generoSelecionado = false;
             inputsGenero.forEach(input => {
@@ -171,8 +172,8 @@
             if (!valido) {
                 e.preventDefault();
             } else {
-                // Se o formulário for válido, redirecionar para a página posRegistro.html
-                e.preventDefault(); // Evita o envio do formulário padrão
+                
+                e.preventDefault(); 
                 window.location.href = "posRegistro.html";
             }
         });

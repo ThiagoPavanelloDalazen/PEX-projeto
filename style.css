@@ -62,8 +62,8 @@ header{
         align-items: center;
         justify-content: space-between;
         background-image: url(./images/header.gif);
-        background-size: cover; /* Ajusta o tamanho da imagem */
-        background-position: center; /* Centraliza a imagem */
+        background-size: cover; 
+        background-position: center; 
 }
 
 
@@ -113,7 +113,7 @@ header img{
 .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+    border-bottom: 1px dotted black; 
   }
   
   /* Tooltip text */
@@ -126,12 +126,12 @@ header img{
     padding: 5px 0;
     border-radius: 6px;
    
-    /* Position the tooltip text - see examples below! */
+   
     position: absolute;
     z-index: 1;
 }
   
-  /* Show the tooltip text when you mouse over the tooltip container */
+
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
