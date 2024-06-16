@@ -53,7 +53,7 @@
         document.getElementById('formularioLogin').addEventListener('submit', function (e) {
             let valido = true;
 
-            // Validar Email
+            
             const email = document.getElementById('email').value;
             const erroEmail = document.getElementById('erro-email');
             if (!email || !/\S+@\S+\.\S+/.test(email)) {
@@ -64,7 +64,7 @@
                 erroEmail.style.display = 'none';
             }
 
-            // Validar Senha
+            
             const senha = document.getElementById('senha').value;
             const erroSenha = document.getElementById('erro-senha');
             if (!senha || senha.length < 8) {
