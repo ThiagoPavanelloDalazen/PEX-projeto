@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
 
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Ubuntu', sans-serif;
-}
-
 *,
 *::before,
 *::after {
@@ -37,8 +30,13 @@ img{
     object-fit: cover;
 }
 
-body{
+/* Definições gerais */
+body {
+    font-family: 'Ubuntu', sans-serif;
     background-color: #f1f1f1;
+    font-size: 1em;
+    font-weight: 400;
+    line-height: 1.5;
 }
 
 nav{
@@ -356,6 +354,46 @@ h2.separator{
     margin-top: 8px;
 }
 
+.nft-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+}
+.nft-list .item {
+    flex: 1 0 280px; 
+    background-color: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+    position: relative; 
+    text-align: center; 
+}
+
+
+.nft-list .item img {
+    width: 100%; 
+    height: auto; 
+    border-radius: 18px; 
+    object-fit: cover; 
+}
+
+
+.category {
+    display: flex;
+    gap: 14px;
+    margin-bottom: 20px;
+}
+
+.category a {
+    background-color: white;
+    padding: 8px 14px;
+    font-size: 15px;
+    border-radius: 14px;
+    transition: all 0.3s ease;
+}
+
+
 footer {
     background-color: #000;
     color: #fff;
@@ -437,7 +475,7 @@ footer .right p {
     }
 
     header .left h1 {
-        font-size: 4rem; /* Use rem units */
+        font-size: 4rem; 
     }
 
     header img {
@@ -492,7 +530,7 @@ footer .right p {
     }
 
     .nft-shop .nft-list .item {
-        width: calc(50% - 15px); /* Flex item to be half width minus gap */
+        width: calc(50% - 15px); 
     }
 
     .nft-shop .nft-list .item img {
@@ -507,7 +545,7 @@ footer .right p {
     }
 
     .sellers .item {
-        width: calc(50% - 15px); /* Flex item to be half width minus gap */
+        width: calc(50% - 15px); 
     }
 
     footer .links a {
