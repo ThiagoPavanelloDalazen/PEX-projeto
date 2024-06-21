@@ -107,7 +107,12 @@
                 horarioSelect.hide();
                 confirmarButton.hide();
 
-                alert('Agendamento confirmado para: ' + horarioSelecionado);
+               
+                var message = 'Olá, gostaria de confirmar meu agendamento para o horário: ' + horarioSelecionado + ' no The John Barbershop.';
+                var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + whatsappNumber + '&text=' + encodeURIComponent(message);
+
+                alert('Olá, gostaria de confirmar meu agendamento para o horário: ' + horarioSelecionado + ' no The John Barbershop.');
+                window.location.href = whatsappUrl;
             });
         });
     </script>
