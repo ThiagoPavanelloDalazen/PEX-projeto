@@ -56,6 +56,7 @@
         $(document).ready(function() {
             var horarioSelect = $('#horario-select');
             var confirmarButton = $('.btn-confirmar');
+            var whatsappNumber = '+5547997249361';  
 
             $('#calendar').fullCalendar({
                 header: {
@@ -107,7 +108,6 @@
                 horarioSelect.hide();
                 confirmarButton.hide();
 
-               
                 var message = 'Olá, gostaria de confirmar meu agendamento para o horário: ' + horarioSelecionado + ' no The John Barbershop.';
                 var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + whatsappNumber + '&text=' + encodeURIComponent(message);
 
