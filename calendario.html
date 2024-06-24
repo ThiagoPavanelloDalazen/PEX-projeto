@@ -1,33 +1,35 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Calendário</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css"/>
+    <title>Calendário The John Barbershop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/5.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Roboto', sans-serif;
+            background-color: #f8f9fa;
+            color: #495057;
         }
         h2 {
             text-align: center;
-            color: #333;
+            color: #212529;
             margin-top: 30px;
+            font-weight: bold;
         }
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 20px auto;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
         }
         #calendar {
             max-width: 100%;
             margin: 20px 0;
         }
         .busy-day {
-            background-color: #FFC0CB !important; /* Rosa claro */
+            background-color: #ffc0cb !important; /* Rosa claro */
         }
         .btn-confirmar {
             margin-top: 20px;
@@ -47,15 +49,14 @@
     <h2>Calendário The John Barbershop</h2>
     <div class="container">
         <div id="calendar"></div>
-        <select id="time-select" class="custom-select" style="display: none;">
-            <!-- Opções de horário serão adicionadas dinamicamente -->
-        </select>
+        <select id="horario-select" class="form-select custom-select" style="display: none;"></select>
         <button class="btn btn-primary btn-confirmar" style="display: none;">Confirmar</button>
     </div>
     <script>
         $(document).ready(function() {
-            var timeSelect = $('#time-select');
-            var confirmButton = $('.btn-confirmar');
+            var horarioSelect = $('#horario-select');
+            var confirmarButton = $('.btn-confirmar');
+            var whatsappNumber = '+5547997249361';  
 
             $('#calendar').fullCalendar({
                 header: {
@@ -67,53 +68,51 @@
                 selectable: true,
                 selectHelper: true,
                 select: function(start, end) {
-                    var selectableTimes = [];
-                    var dayOfWeek = start.day();
+                    var horariosDisponiveis = [];
+                    var diaSemana = start.day();
 
-                    // Defina os horários disponíveis com base no dia da semana
-                    if (dayOfWeek >= 2 && dayOfWeek <= 5) { // Terça a Sexta
-                        for (var i = 9; i <= 21; i++) {
-                            selectableTimes.push(moment({hour: i, minute: 30}).format('HH:mm'));
+                    if (diaSemana >= 2 && diaSemana <= 5) { 
+                        for (var hora = 9; hora <= 21; hora++) {
+                            horariosDisponiveis.push(moment({hour: hora, minute: 30}).format('HH:mm'));
                         }
-                    } else if (dayOfWeek === 6) { // Sábado
-                        for (var i = 8; i <= 17; i++) {
-                            selectableTimes.push(moment({hour: i}).format('HH:mm'));
+                    } else if (diaSemana === 6) { 
+                        for (var hora = 8; hora <= 17; hora++) {
+                            horariosDisponiveis.push(moment({hour: hora}).format('HH:mm'));
                         }
-                    } else { // Segunda e Domingo
+                    } else { 
                         alert('Desculpe, estamos fechados às segundas e domingos.');
                         return;
                     }
 
-                    // Limpe e adicione as opções de horário ao seletor
-                    timeSelect.empty();
-                    $.each(selectableTimes, function(index, value) {
-                        timeSelect.append('<option value="' + value + '">' + value + '</option>');
+                    horarioSelect.empty();
+                    $.each(horariosDisponiveis, function(index, value) {
+                        horarioSelect.append('<option value="' + value + '">' + value + '</option>');
                     });
 
-                    // Exiba o seletor de horário e o botão de confirmar
-                    timeSelect.show();
-                    confirmButton.show();
+                    horarioSelect.show();
+                    confirmarButton.show();
                 },
                 eventClick: function(event) {
-                    // Remova o evento quando um evento existente é clicado
                     $('#calendar').fullCalendar('removeEvents', event._id);
                 },
-                
             });
 
-            confirmButton.click(function() {
-                var selectedTime = timeSelect.val();
-                if (!selectedTime) {
+            confirmarButton.click(function() {
+                var horarioSelecionado = horarioSelect.val();
+                if (!horarioSelecionado) {
                     alert('Por favor, selecione um horário.');
                     return;
                 }
-                // Remove o horário selecionado do seletor de horários
-                timeSelect.find('option[value="' + selectedTime + '"]').remove();
-                timeSelect.hide();
-                confirmButton.hide();
 
-                // Implemente a lógica para confirmar o agendamento aqui
-                alert('Agendamento confirmado para: ' + selectedTime);
+                horarioSelect.find('option[value="' + horarioSelecionado + '"]').remove();
+                horarioSelect.hide();
+                confirmarButton.hide();
+
+                var message = 'Olá, gostaria de confirmar meu agendamento para o horário: ' + horarioSelecionado + ' no The John Barbershop.';
+                var whatsappUrl = 'https://api.whatsapp.com/send?phone=' + whatsappNumber + '&text=' + encodeURIComponent(message);
+
+                alert('Olá, gostaria de confirmar meu agendamento para o horário: ' + horarioSelecionado + ' no The John Barbershop.');
+                window.location.href = whatsappUrl;
             });
         });
     </script>

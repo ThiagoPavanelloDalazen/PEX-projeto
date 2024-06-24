@@ -7,7 +7,7 @@
 
     <title>Login</title>
     <style>
-        .error {
+        .mensagem-erro {
             color: red;
             font-size: 0.9em;
             display: none;
@@ -20,7 +20,7 @@
             <img src="https://www.thejohnbarbershop.com.br/empresa/img/logo.png" alt="Logo">
         </div>
         <div class="form">
-            <form id="loginForm">
+            <form id="formularioLogin">
                 <div class="form-header">
                     <div class="title">
                         <h1>Login</h1>
@@ -31,52 +31,54 @@
                     <div class="input-bot">
                         <label for="email">Email</label>
                         <input id="email" type="email" name="email" placeholder="Digite seu email" required>
-                        <div id="email-error" class="error"></div>
+                        <div id="erro-email" class="mensagem-erro"></div>
                     </div>
 
                     <div class="input-bot">
-                        <label for="password">Senha</label>
-                        <input id="password" type="password" name="password" placeholder="Digite sua senha" required>
-                        <div id="password-error" class="error"></div>
+                        <label for="senha">Senha</label>
+                        <input id="senha" type="password" name="password" placeholder="Digite sua senha" required>
+                        <div id="erro-senha" class="mensagem-erro"></div>
                     </div>
                 </div>
 
                 <div class="continue-button">
                     <button type="submit">Entrar</button>
+                    
                 </div>
-
             </form>
         </div>
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function (e) {
-            let valid = true;
+        document.getElementById('formularioLogin').addEventListener('submit', function (e) {
+            let valido = true;
 
-            // Validar Email
+            
             const email = document.getElementById('email').value;
-            const emailError = document.getElementById('email-error');
+            const erroEmail = document.getElementById('erro-email');
             if (!email || !/\S+@\S+\.\S+/.test(email)) {
-                emailError.style.display = 'block';
-                valid = false;
+                erroEmail.textContent = 'Email inválido.';
+                erroEmail.style.display = 'block';
+                valido = false;
             } else {
-                emailError.style.display = 'none';
+                erroEmail.style.display = 'none';
             }
 
-            // Validar Senha
-            const password = document.getElementById('password').value;
-            const passwordError = document.getElementById('password-error');
-            if (!password || password.length < 8) {
-                passwordError.style.display = 'block';
-                valid = false;
+            
+            const senha = document.getElementById('senha').value;
+            const erroSenha = document.getElementById('erro-senha');
+            if (!senha || senha.length < 8) {
+                erroSenha.textContent = 'A senha deve ter pelo menos 8 caracteres.';
+                erroSenha.style.display = 'block';
+                valido = false;
             } else {
-                passwordError.style.display = 'none';
+                erroSenha.style.display = 'none';
             }
 
-            if (!valid) {
+            if (!valido) {
                 e.preventDefault();
             } else {
-                // Redirecionar para a página de pós-login
+                
                 e.preventDefault();
                 window.location.href = "posLogin.html";
             }
